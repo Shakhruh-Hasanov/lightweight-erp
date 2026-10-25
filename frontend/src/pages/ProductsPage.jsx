@@ -69,6 +69,16 @@ export default function ProductsPage() {
           table={table}
           placeholder="Search SKU, name or description…"
           filters={[{ name: 'status', label: 'Statuses', options: ['ACTIVE', 'INACTIVE'] }]}
+          exportName="products"
+          exportColumns={['SKU', 'Name', 'Unit', 'Cost', 'Price', 'Status']}
+          exportPick={(product) => [
+            product.sku,
+            product.name,
+            product.unitOfMeasure,
+            product.costPrice,
+            product.sellingPrice,
+            productStatus(product),
+          ]}
         />
         <div className="table-wrap">
           <table>

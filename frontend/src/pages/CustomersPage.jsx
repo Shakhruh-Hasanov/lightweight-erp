@@ -80,6 +80,16 @@ export default function CustomersPage() {
             { name: 'status', label: 'Statuses', options: ['ACTIVE', 'INACTIVE', 'BLOCKED'] },
             { name: 'type', label: 'Types', options: CUSTOMER_TYPES },
           ]}
+          exportName="customers"
+          exportColumns={['Number', 'Name', 'Type', 'Email', 'Phone', 'Status']}
+          exportPick={(customer) => [
+            customer.customerNumber,
+            customer.displayName,
+            customer.customerType,
+            customer.email,
+            customer.phone,
+            customer.customerStatus,
+          ]}
         />
         <div className="table-wrap">
           <table>
