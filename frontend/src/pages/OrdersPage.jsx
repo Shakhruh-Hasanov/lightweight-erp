@@ -41,6 +41,15 @@ export default function OrdersPage() {
           table={table}
           placeholder="Search order number or customer…"
           filters={[{ name: 'status', label: 'Statuses', options: ORDER_STATUSES }]}
+          exportName="orders"
+          exportColumns={['Order', 'Customer', 'Date', 'Status', 'Total']}
+          exportPick={(order) => [
+            order.orderNumber,
+            order.customerName,
+            order.orderDate,
+            order.status,
+            order.totalAmount,
+          ]}
         />
         <div className="table-wrap">
           <table>

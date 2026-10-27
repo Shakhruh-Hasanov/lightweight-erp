@@ -230,6 +230,7 @@ td select { min-width: 240px; }
 .toolbar-search { flex: 1 1 260px; max-width: 420px; background: var(--surface); }
 .toolbar-filter { width: auto; background: var(--surface); }
 .toolbar-count { margin-left: auto; font-size: 0.85rem; color: var(--muted); }
+.toolbar-export { margin-left: 8px; }
 .sort-button {
   all: unset; cursor: pointer; display: inline-flex; vertical-align: middle; gap: 4px; align-items: center;
   font: inherit; text-transform: inherit; letter-spacing: inherit; color: inherit;

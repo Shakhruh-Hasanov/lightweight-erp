@@ -6,9 +6,11 @@
 //     filters={[{ name: 'status', label: 'Status', options: ['ACTIVE', 'INACTIVE'] }]}
 //   />
 import { formatEnum } from '../format';
+import { exportCsv } from '../exportCsv';
 
-export default function TableToolbar({ table, placeholder = 'Search…', filters = [] }) {
+export default function TableToolbar({ table, placeholder = 'Search…', filters = [], exportName, exportColumns, exportPick }) {
   const isFiltered = table.search || Object.values(table.filterValues).some(Boolean);
+  const canExport = Boolean(exportName && exportColumns && exportPick && table.rows.length > 0);
 
   return (
     <div className="toolbar">
@@ -39,6 +41,15 @@ export default function TableToolbar({ table, placeholder = 'Search…', filters
       <span className="toolbar-count">
         {isFiltered ? `${table.rows.length} of ${table.total}` : `${table.total}`} {table.total === 1 ? 'row' : 'rows'}
       </span>
+      {canExport && (
+        <button
+          type="button"
+          className="button toolbar-export"
+          onClick={() => exportCsv(exportName, exportColumns, table.rows, exportPick)}
+        >
+          Export CSV
+        </button>
+      )}
     </div>
   );
 }
